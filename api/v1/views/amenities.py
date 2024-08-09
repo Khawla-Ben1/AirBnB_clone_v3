@@ -1,3 +1,7 @@
+#!/usr/bin/python3
+"""
+RESTful API actions for amenities objects
+"""
 from flask import jsonify, request, abort
 from models import storage
 from models.amenity import Amenity

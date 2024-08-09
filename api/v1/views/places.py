@@ -1,3 +1,7 @@
+#!/usr/bin/python3
+"""
+RESTful API actions for places objects
+"""
 from flask import jsonify, request, abort
 from models import storage
 from models.place import Place
