@@ -84,7 +84,6 @@ test_db_storage.py'])
         expected_count = storage.count(State) + storage.count()
         self.assertEqual(storage.count(), expected_count)
 
-
     def test_get(self):
         """ Test get method """
         state = State(name="California")
@@ -100,8 +99,6 @@ test_db_storage.py'])
         self.assertEqual(storage.count(State), state_count + 1)
         expected_count = storage.count(State) + storage.count()
         self.assertEqual(storage.count(), expected_count)
-
-
 
 class TestFileStorage(unittest.TestCase):
     """Test the FileStorage class"""
