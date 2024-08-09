@@ -100,6 +100,7 @@ test_db_storage.py'])
         expected_count = storage.count(State) + storage.count()
         self.assertEqual(storage.count(), expected_count)
 
+
 class TestFileStorage(unittest.TestCase):
     """Test the FileStorage class"""
     @unittest.skipIf(models.storage_t != 'db', "not testing db storage")
