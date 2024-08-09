@@ -67,20 +67,6 @@ test_db_storage.py'])
                              "{:s} method needs a docstring".format(func[0]))
             self.assertTrue(len(func[1].__doc__) >= 1,
                             "{:s} method needs a docstring".format(func[0]))
-    def test_get(self):
-        """ Test get method """
-        state = State(name="California")
-        state.save()
-        self.assertEqual(storage.get(State, state.id), state)
-        self.assertIsNone(storage.get(State, "invalid_id"))
-
-    def test_count(self):
-        """ Test count method """
-        state_count = storage.count(State)
-        state = State(name="Nevada")
-        state.save()
-        self.assertEqual(storage.count(State), state_count + 1)
-        self.assertEqual(storage.count(), storage.count(State) + storage.count())
 
     def test_get(self):
         """ Test get method """
@@ -95,7 +81,26 @@ test_db_storage.py'])
         state = State(name="Nevada")
         state.save()
         self.assertEqual(storage.count(State), state_count + 1)
-        self.assertEqual(storage.count(), storage.count(State) + storage.count())
+        expected_count = storage.count(State) + storage.count()
+        self.assertEqual(storage.count(), expected_count)
+
+
+    def test_get(self):
+        """ Test get method """
+        state = State(name="California")
+        state.save()
+        self.assertEqual(storage.get(State, state.id), state)
+        self.assertIsNone(storage.get(State, "invalid_id"))
+
+    def test_count(self):
+        """ Test count method """
+        state_count = storage.count(State)
+        state = State(name="Nevada")
+        state.save()
+        self.assertEqual(storage.count(State), state_count + 1)
+        expected_count = storage.count(State) + storage.count()
+        self.assertEqual(storage.count(), expected_count)
+
 
 
 class TestFileStorage(unittest.TestCase):
